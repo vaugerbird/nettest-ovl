@@ -19,11 +19,11 @@ public:
 
         auto list = new tsl::elm::List();// A list that can contain sub elements and handles scrolling
 
-        auto* startTestItem = new tsl::elm::ListItem("Start Test");
+      //auto* startTestItem = new tsl::elm::ListItem("Start Test");
         //startTestItem->setClickListener(testBegin);
-        list->addItem(startTestItem);
+        //list->addItem(startTestItem);
 
-        //list->addItem(new tsl::elm::ListItem("Select Server"));//Select server button
+        list->addItem(new tsl::elm::ListItem("Start Test"));//Select server button
 
         //list->addItem(new tsl::elm::ListItem("Custom Server"));//Custom server button
 
@@ -39,9 +39,9 @@ public:
     }
 
     // Called once every frame to handle inputs not handled by other UI elements
-    virtual bool handleInput(u64 keysDown, u64 keysHeld, touchPosition touchInput, JoystickPosition leftJoyStick, JoystickPosition rightJoyStick) override {
-        return false;   // Return true here to singal the inputs have been consumed
-    }
+  // virtual bool handleInput(u64 keysDown, u64 keysHeld, touchPosition touchInput, JoystickPosition leftJoyStick, JoystickPosition rightJoyStick) override {
+  //      return false;   // Return true here to singal the inputs have been consumed
+  //  }
 };
 
 class NetOverlay : public tsl::Overlay {
