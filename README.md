@@ -10,6 +10,6 @@ Network Test Overlay (nettest-ovl) is a tesla overlay that tests your internet c
 # Credits
 
 * WerWolf for their excellent Tesla-Template, libtesla library, and GBATemp tutorial
-* Edizon/Tesla Discord, not for directly helping me, but having the small snipets of help that I needed
+* Edizon/Tesla Discord directly helping me, and having the small snipets of help that I needed to help out with other problems
 * nedex with QuickNTP, my original idea was heavily inspired by their work
 * SegFault42 with sys-ftpd-ovl, their IP grabber code really helped me understand how to get it to work
