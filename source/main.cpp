@@ -20,7 +20,7 @@ class resultsGui : public tsl::Gui {
     	virtual void update() override {
     	}
 			virtual bool handleInput(uint64_t keysDown, uint64_t keysHeld, touchPosition touchInput, JoystickPosition leftJoyStick, JoystickPosition rightJoyStick){
-				  return true;  // Return true here to singal the inputs have been consumed
+				  return false;  // Return true here to singal the inputs have been consumed
 		  }
 };
 
@@ -51,7 +51,7 @@ public:
     }
       // Called once every frame to handle inputs not handled by other UI elements
       virtual bool handleInput(uint64_t keysDown, uint64_t keysHeld, touchPosition touchInput, JoystickPosition leftJoyStick, JoystickPosition rightJoyStick) {
-       return true;  // Return true here to singal the inputs have been consumed
+       return false;  // Return true here to singal the inputs have been consumed
       }
       virtual void update() override {    // Called once every frame to update values
       }
