@@ -7,11 +7,11 @@ class resultsGui : public tsl::Gui {
 	public:
     	resultsGui() { }
     	virtual tsl::elm::Element* createUI() override {
-        	auto rootFrame = new tsl::elm::OverlayFrame("nettest-ovl", "by vaugerbird - v0.0.4-test");
+        	auto rootFrame = new tsl::elm::OverlayFrame("nettest-ovl", "by vaugerbird - v0.0.5-test");
         	auto list = new tsl::elm::List();
-			tsl::hlp::doWithSmSession([]{
-				gethostname(hostname, sizeof(hostname));
-            });
+			       tsl::hlp::doWithSmSession([]{    //Credits to SegFault42 for this snippet of code to grab the IP address
+				           gethostname(hostname, sizeof(hostname));
+                  });
         	list->addItem(new tsl::elm::ListItem("IP Address: ", hostname));
         	rootFrame->setContent(list);
         	return rootFrame;
@@ -25,6 +25,9 @@ class resultsGui : public tsl::Gui {
 };
 
 class nettestGui : public tsl::Gui {
+private:
+      int currentServer = 0;
+
 public:
     nettestGui() {}
 
@@ -33,21 +36,26 @@ public:
     virtual tsl::elm::Element* createUI() override {
         // A OverlayFrame is the base element every overlay consists of. This will draw the default Title and Subtitle.
         // If you need more information in the header or want to change it's look, use a HeaderOverlayFrame.
-        auto frame = new tsl::elm::OverlayFrame("nettest-ovl", "by vaugerbird - v0.0.4-test");
+        auto frame = new tsl::elm::OverlayFrame("nettest-ovl", "by vaugerbird - v0.0.5-test");
         auto list = new tsl::elm::List();// A list that can contain sub elements and handles scrolling
         auto* startTestItem = new tsl::elm::ListItem("Start Test");
   	    	startTestItem->setClickListener([](uint64_t keys) {
   		      	if (keys & KEY_A) {
-  			    	tsl::hlp::requestForeground(false);
   			    	tsl::changeTo<resultsGui>();
   		  		return true;
   		  	}
   			return false;
   		});
 		  list->addItem(startTestItem);
-      list->addItem(new tsl::elm::ListItem("Custom Server"));//Custom server button
+      list->addItem(new tsl::elm::CategoryHeader("Test server selection"));
+      auto* servTrackbar = new tsl::elm::NamedStepTrackBar("\uE00A", { "www.google.com", "www.microsoft.com", "www.reddit.com" });
+      list->addItem(servTrackbar);
+      list->addItem(new tsl::elm::ListItem("Server: ", currentServer));
+
       frame->setContent(list); // Add the list to the frame for it to be drawn
+
       return frame;        // Return the frame to have it become the top level element of this Gui
+
     }
       // Called once every frame to handle inputs not handled by other UI elements
       virtual bool handleInput(uint64_t keysDown, uint64_t keysHeld, touchPosition touchInput, JoystickPosition leftJoyStick, JoystickPosition rightJoyStick) {
