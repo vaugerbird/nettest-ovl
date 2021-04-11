@@ -48,9 +48,9 @@ public:
   		});
 		  list->addItem(startTestItem);
       list->addItem(new tsl::elm::CategoryHeader("Test server selection"));
-      auto* servTrackbar = new tsl::elm::NamedStepTrackBar("\uE00A", { "www.google.com", "www.microsoft.com", "www.reddit.com" });
+      auto* servTrackbar = new tsl::elm::NamedStepTrackBar("\uE008", { "www.google.com", "www.microsoft.com", "www.reddit.com" });
       list->addItem(servTrackbar);
-      list->addItem(new tsl::elm::ListItem("Server: ", currentServer));
+      //list->addItem(new tsl::elm::ListItem("Server: ", servTrackbar));
 
       frame->setContent(list); // Add the list to the frame for it to be drawn
 
